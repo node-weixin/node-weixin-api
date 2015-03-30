@@ -1,0 +1,7 @@
+node_modules
+example
+.DS_Store
+coverage
+.idea
+.project
+.settings
