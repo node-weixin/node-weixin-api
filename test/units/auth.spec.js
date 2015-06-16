@@ -15,15 +15,12 @@ describe("Weixin Unit Test", function () {
 
   it('should initAuth', function(done){
     weixin.initAuth(appId, appSecrete);
-    assert(weixin.appId === appId);
-    assert(weixin.appSecrete === appSecrete);
     done();
   });
 
 
   it('should initToken', function(done){
     weixin.initToken(appToken);
-    assert(weixin.appToken === appToken);
     done();
   });
 
@@ -42,7 +39,6 @@ describe("Weixin Unit Test", function () {
   });
 
   it('should update menu items', function(done) {
-
     done();
   });
 });
