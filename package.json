@@ -30,8 +30,7 @@
   ],
   "dependencies": {
     "req-validator": "0.0.7",
-    "request": "2.53.0",
-    "should": "^6.0.3",
+    "request": "^2.53.0",
     "web-errors": "0.0.13"
   },
   "devDependencies": {
@@ -43,6 +42,8 @@
     "grunt-mocha-cli": "^1.12.0",
     "jshint-stylish": "^1.0.1",
     "load-grunt-tasks": "^3.1.0",
-    "time-grunt": "^1.1.0"
+    "should": "^6.0.3",
+    "time-grunt": "^1.1.0",
+    "validator": "^3.40.1"
   }
 }

@@ -1,39 +1,27 @@
 var assert = require("assert");
-
-var appId = 'wx0201661ce8fb3e11';
-var appSecrete = '483585a84eacd76693855485cb88dc8a';
-var appToken = 'didsosdifsofisdofisfosjfosjfsodf';
-
-
+var config = require('./../config');
+var weixin = require('./../../index');
 
 
 describe("Weixin Unit Test", function () {
-  var weixin = require('../../index');
   var signature;
   var timestamp = new Date();
   var nonce = 'sdfsdsdfsdf';
 
-  it('should initAuth', function(done){
-    weixin.initAuth(appId, appSecrete);
-    done();
-  });
-
-
-  it('should initToken', function(done){
-    weixin.initToken(appToken);
+  it('should init', function(done){
+    weixin.auth.init(config);
     done();
   });
 
   it('should be able to generate signature', function(done){
     timestamp = timestamp.getTime();
-
-    signature = weixin.generateSignature(appToken, timestamp, nonce);
+    signature = weixin.auth.generateSignature(config.appToken, timestamp, nonce);
     assert(!!signature);
     done();
   });
 
   it('should be able to check signature', function(done){
-    var result = weixin.check(signature, timestamp, nonce);
+    var result = weixin.auth.check(signature, timestamp, nonce);
     assert(result);
     done();
   });
