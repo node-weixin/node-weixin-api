@@ -2,7 +2,6 @@ var assert = require("assert");
 
 var appId = 'wx0201661ce8fb3e11';
 var appSecrete = '483585a84eacd76693855485cb88dc8a';
-
 var appToken = 'didsosdifsofisdofisfosjfosjfsodf';
 
 
@@ -39,6 +38,11 @@ describe("Weixin Unit Test", function () {
   it('should be able to check signature', function(done){
     var result = weixin.check(signature, timestamp, nonce);
     assert(result);
+    done();
+  });
+
+  it('should update menu items', function(done) {
+
     done();
   });
 });
