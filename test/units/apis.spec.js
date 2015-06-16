@@ -1,5 +1,5 @@
 var assert = require("assert");
-var config = require('./../config');
+var fs = require('fs');
 var weixin = require('./../../index');
 
 var validator = require('validator');
@@ -12,6 +12,17 @@ describe("Weixin apis Test", function () {
     weixin.api.tokenize(function (error, json) {
       assert.equal(true, !!json.access_token && json.access_token.length > 1);
       assert.equal(true, json.expires_in === 7200);
+      done();
+    });
+  });
+
+  //IP listing
+  it('should be able to get a token', function (done) {
+    weixin.api.ip(function (error, json) {
+      assert.equal(true, json.ip_list.length > 0);
+      for(var i = 0; i < json.ip_list.length; i++) {
+        assert.equal(true, validator.isIP(json.ip_list[i]));
+      }
       done();
     });
   });
@@ -78,6 +89,18 @@ describe("Weixin apis Test", function () {
     weixin.api.menu.create(json, function (error, json) {
       assert.equal(true, json.errcode === 0);
       assert.equal(true, json.errmsg === 'ok');
+      done();
+    });
+  });
+
+
+  //Media functions
+  it('should be able to upload a temporary media', function (done) {
+    var file = fs.realpathSync(__dirname + '/../') + '/media/image.jpg';
+    weixin.api.media.temporary.create('image', file, function (error, json) {
+      assert.equal(true, json.type === 'image');
+      assert.equal(true, typeof json.media_id === 'string');
+      assert.equal(true, validator.isNumeric(json.created_at) && !!new Date(json.created_at));
       done();
     });
   });
