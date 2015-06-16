@@ -29,8 +29,10 @@
     "wechat"
   ],
   "dependencies": {
+    "req-validator": "0.0.7",
     "request": "2.53.0",
-    "should": "^6.0.3"
+    "should": "^6.0.3",
+    "web-errors": "0.0.13"
   },
   "devDependencies": {
     "browserify": "^9.0.3",
