@@ -25,9 +25,5 @@ describe("Weixin Unit Test", function () {
     assert(result);
     done();
   });
-
-  it('should update menu items', function(done) {
-    done();
-  });
 });
 
