@@ -1,0 +1,8 @@
+/node_modules/
+npm-debug.log
+example
+.DS_Store
+coverage
+.idea
+.project
+.settings

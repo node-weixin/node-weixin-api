@@ -1,0 +1,48 @@
+{
+  "name": "node-weixin-api",
+  "version": "0.0.1",
+  "description": "微信公共平台Node库 API",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test-all"
+  },
+  "author": {
+    "name": "calidion",
+    "email": "calidion@gmail.com",
+    "url": "blog.3gcnbeta.com"
+  },
+  "readmeFilename": "README.md",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JSSDKCN/node-weixin-api.git"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "weixin",
+    "wechat"
+  ],
+  "dependencies": {
+    "request": "2.53.0"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-cli": "^1.12.0",
+    "jshint-stylish": "^1.0.1",
+    "load-grunt-tasks": "^3.1.0",
+    "time-grunt": "^1.1.0"
+  },
+  "scripts": {
+    "test": "grunt",
+    "browser": "browserify index.js > browser.js"
+  }
+}
