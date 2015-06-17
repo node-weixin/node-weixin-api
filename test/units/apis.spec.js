@@ -162,7 +162,7 @@ describe("Weixin apis Test", function () {
     };
     weixin.api.media.permanent.news(json, function (error, json) {
       newsId = json.media_id;
-      assert(true, typeof json.media_id === 'string');
+      assert.equal(true, typeof json.media_id === 'string');
       done();
     });
   });
@@ -174,9 +174,9 @@ describe("Weixin apis Test", function () {
 
   it('should be able to create a temporary qrcode', function (done) {
     weixin.api.qrcode.temporary.create(10, function (error, json) {
-      assert(true, validator.isURL(json.url));
-      assert(true, json.expire_seconds <= 7 * 3600 * 24);
-      assert(true, typeof json.ticket === 'string');
+      assert.equal(true, validator.isURL(json.url));
+      assert.equal(true, json.expire_seconds <= 7 * 3600 * 24);
+      assert.equal(true, typeof json.ticket === 'string');
       ticket = json.ticket;
       done();
     });
@@ -185,9 +185,9 @@ describe("Weixin apis Test", function () {
 
   it('should be able to get the temporary qrcode', function (done) {
     weixin.api.qrcode.temporary.create(10, function (error, json) {
-      assert(true, validator.isURL(json.url));
-      assert(true, json.expire_seconds <= 7 * 3600 * 24);
-      assert(true, typeof json.ticket === 'string');
+      assert.equal(true, validator.isURL(json.url));
+      assert.equal(true, json.expire_seconds <= 7 * 3600 * 24);
+      assert.equal(true, typeof json.ticket === 'string');
       ticket = json.ticket;
       done();
     });
@@ -195,8 +195,8 @@ describe("Weixin apis Test", function () {
 
   it('should be able to create a permanent qrcode', function (done) {
     weixin.api.qrcode.permanent.create(10, function (error, json) {
-      assert(true, validator.isURL(json.url));
-      assert(true, typeof json.ticket === 'string');
+      assert.equal(true, validator.isURL(json.url));
+      assert.equal(true, typeof json.ticket === 'string');
 
       done();
     });
@@ -204,8 +204,58 @@ describe("Weixin apis Test", function () {
 
   it('should be able to create a permanent string qrcode', function (done) {
     weixin.api.qrcode.permanent.createString('heleoodo', function (error, json) {
-      assert(true, validator.isURL(json.url));
-      assert(true, typeof json.ticket === 'string');
+      assert.equal(true, validator.isURL(json.url));
+      assert.equal(true, typeof json.ticket === 'string');
+      done();
+    });
+  });
+
+  //URL functions
+
+  it('should be able to reduce a url string', function (done) {
+    var url = 'https://mp.weixin.qq.com/advanced/advanced?action=dev&t=advanced/dev&token=fsosofd&lang=zh_CN';
+    weixin.api.url.shorten(url, function (error, json) {
+      assert.equal(true, validator.isURL(json.short_url));
+      assert.equal(true, json.errcode === 0);
+      assert.equal(true, json.errmsg === 'ok');
+      assert.equal(true, json.short_url.length < url.length);
+      done();
+    });
+  });
+
+  //User functions
+
+  var nextOpenId = null;
+  it('should be able to get user info', function (done) {
+    var openid = 'oZ-W6swP3sNCFClGG0SF8gvRaqNM';
+    weixin.api.user.info(openid, function (error, json) {
+      assert.equal(true, typeof json.nickname === 'string');
+      assert.equal(true, json.openid === openid);
+      done();
+    });
+  });
+
+  it('should be able to list subscribes', function (done) {
+    weixin.api.user.list(null, function (error, json) {
+      assert.equal(true, json.total >= 0);
+      assert.equal(true, json.count >= 0);
+      if (json.count > 0) {
+        assert.equal(true, json.data.openid.length >= 0);
+        assert.equal(true, !!json.next_openid);
+        nextOpenId = json.next_openid;
+      }
+      done();
+    });
+  });
+
+  it('should be able to list subscribes from openid', function (done) {
+    weixin.api.user.list(nextOpenId, function (error, json) {
+      assert.equal(true, json.total >= 0);
+      assert.equal(true, json.count >= 0);
+      if (json.count > 0) {
+        assert.equal(true, json.data.openid.length >= 0);
+        assert.equal(true, !!json.next_openid);
+      }
       done();
     });
   });
