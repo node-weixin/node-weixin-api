@@ -94,16 +94,120 @@ describe("Weixin apis Test", function () {
   });
 
 
+  /*
+
   //Media functions
+
+  var mediaId = null, newsId = null;
   it('should be able to upload a temporary media', function (done) {
     var file = fs.realpathSync(__dirname + '/../') + '/media/image.jpg';
     weixin.api.media.temporary.create('image', file, function (error, json) {
       assert.equal(true, json.type === 'image');
       assert.equal(true, typeof json.media_id === 'string');
+      mediaId = json.media_id;
       assert.equal(true, validator.isNumeric(json.created_at) && !!new Date(json.created_at));
       done();
     });
   });
 
+
+  it('should be able to get a temporary media', function (done) {
+    var path = fs.realpathSync(__dirname + '/../') + '/output/temporary.jpg';
+
+    weixin.api.media.temporary.get(mediaId, path, function (error) {
+      done();
+    });
+  });
+
+  it('should be able to get a temporary media', function (done) {
+    var path = fs.realpathSync(__dirname + '/../') + '/output/temporary.jpg';
+    if (fs.existsSync(path)) {
+      fs.unlink(path);
+    }
+
+    weixin.api.media.temporary.get(mediaId, path, function (error) {
+      assert(fs.existsSync(path));
+      done();
+    });
+  });
+
+
+  it('should be able to upload a permanent media', function (done) {
+    var file = fs.realpathSync(__dirname + '/../') + '/media/image.jpg';
+    weixin.api.media.permanent.create('image', file, function (error, json) {
+      assert.equal(true, typeof json.media_id === 'string');
+      mediaId = json.media_id;
+      assert.equal(true, validator.isURL(json.url));
+      done();
+    });
+  });
+
+  it('should be able to get a permanent media', function (done) {
+    weixin.api.media.permanent.get(mediaId, function (error, body) {
+      done();
+    });
+  });
+
+  it('should be able to create a permanet media', function (done) {
+    var json = {
+      "articles": [{
+        "title": 'hello',
+        "thumb_media_id": mediaId,
+        "author": 'author',
+        "digest": 'digest',
+        "show_cover_pic": 0,
+        "content": 'content',
+        "content_source_url": 'http://www.sina.com.cn'
+      }]
+    };
+    weixin.api.media.permanent.news(json, function (error, json) {
+      newsId = json.media_id;
+      assert(true, typeof json.media_id === 'string');
+      done();
+    });
+  });
+  */
+
+  //QRCode Functions
+
+  var ticket = null;
+
+  it('should be able to create a temporary qrcode', function (done) {
+    weixin.api.qrcode.temporary.create(10, function (error, json) {
+      assert(true, validator.isURL(json.url));
+      assert(true, json.expire_seconds <= 7 * 3600 * 24);
+      assert(true, typeof json.ticket === 'string');
+      ticket = json.ticket;
+      done();
+    });
+  });
+
+
+  it('should be able to get the temporary qrcode', function (done) {
+    weixin.api.qrcode.temporary.create(10, function (error, json) {
+      assert(true, validator.isURL(json.url));
+      assert(true, json.expire_seconds <= 7 * 3600 * 24);
+      assert(true, typeof json.ticket === 'string');
+      ticket = json.ticket;
+      done();
+    });
+  });
+
+  it('should be able to create a permanent qrcode', function (done) {
+    weixin.api.qrcode.permanent.create(10, function (error, json) {
+      assert(true, validator.isURL(json.url));
+      assert(true, typeof json.ticket === 'string');
+
+      done();
+    });
+  });
+
+  it('should be able to create a permanent string qrcode', function (done) {
+    weixin.api.qrcode.permanent.createString('heleoodo', function (error, json) {
+      assert(true, validator.isURL(json.url));
+      assert(true, typeof json.ticket === 'string');
+      done();
+    });
+  });
 });
 
