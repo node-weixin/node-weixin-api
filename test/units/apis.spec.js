@@ -93,9 +93,6 @@ describe("Weixin apis Test", function () {
     });
   });
 
-
-  /*
-
   //Media functions
 
   var mediaId = null, newsId = null;
@@ -109,7 +106,6 @@ describe("Weixin apis Test", function () {
       done();
     });
   });
-
 
   it('should be able to get a temporary media', function (done) {
     var path = fs.realpathSync(__dirname + '/../') + '/output/temporary.jpg';
@@ -144,11 +140,13 @@ describe("Weixin apis Test", function () {
 
   it('should be able to get a permanent media', function (done) {
     weixin.api.media.permanent.get(mediaId, function (error, body) {
+      var file = fs.realpathSync(__dirname + '/../') + '/out/permanent.jpg';
+      fs.writeFileSync(file, new Buffer(body));
       done();
     });
   });
 
-  it('should be able to create a permanet media', function (done) {
+  it('should be able to create a permanent news', function (done) {
     var json = {
       "articles": [{
         "title": 'hello',
@@ -166,7 +164,8 @@ describe("Weixin apis Test", function () {
       done();
     });
   });
-  */
+
+
 
   //QRCode Functions
 
