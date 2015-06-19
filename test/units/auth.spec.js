@@ -25,5 +25,15 @@ describe("Weixin Unit Test", function () {
     assert(result);
     done();
   });
+
+  it('should be able to generate params', function(done){
+    var params = {
+      a: 'b',
+      c: 'd'
+    }
+    var result = weixin.restful.toParam(params, true);
+    assert.equal(true, result === 'a=b&c=d');
+    done();
+  });
 });
 
