@@ -292,6 +292,20 @@ describe("Weixin apis Test", function () {
     });
   });
 
+  //JSSDK Ticket retrieving
+  it('should be able to retrieving JSSDK ticket', function (done) {
+    weixin.auth.determine(function () {
+
+      weixin.api.jssdk.ticket(function (error, json) {
+        assert.equal(true, json.errcode === 0);
+        assert.equal(true, json.errmsg === 'ok');
+        assert.equal(true, typeof json.ticket === 'string');
+        assert.equal(true, json.expires_in === 7200);
+        done();
+      });
+    });
+  });
+
   //Token retrieving
   it('should be able to get a token', function (done) {
     weixin.auth.tokenize(function (error, json) {
