@@ -30,7 +30,7 @@ describe("Weixin Unit Test", function () {
     var params = {
       a: 'b',
       c: 'd'
-    }
+    };
     var result = weixin.restful.toParam(params, true);
     assert.equal(true, result === 'a=b&c=d');
     done();

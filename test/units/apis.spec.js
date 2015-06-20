@@ -4,7 +4,6 @@ var weixin = require('./../../index');
 
 var validator = require('validator');
 
-var accessToken = null;
 describe("Weixin apis Test", function () {
 
   //IP listing
@@ -115,6 +114,7 @@ describe("Weixin apis Test", function () {
     weixin.auth.determine(function () {
       var path = fs.realpathSync(__dirname + '/../') + '/output/temporary.jpg';
       weixin.api.media.temporary.get(mediaId, path, function (error) {
+        assert(!error);
         done();
       });
     });
@@ -127,6 +127,7 @@ describe("Weixin apis Test", function () {
         fs.unlink(path);
       }
       weixin.api.media.temporary.get(mediaId, path, function (error) {
+        assert(!error);
         assert(fs.existsSync(path));
         done();
       });
