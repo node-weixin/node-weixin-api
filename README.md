@@ -63,7 +63,7 @@ MIT © [calidion](blog.3gcnbeta.com)
 
 [npm-image]: https://badge.fury.io/js/node-weixin-api.svg
 [npm-url]: https://npmjs.org/package/node-weixin-api
-[travis-image]: https://travis-ci.org/calidion/node-weixin-api.svg?branch=master
-[travis-url]: https://travis-ci.org/calidion/node-weixin-api
-[daviddm-image]: https://david-dm.org/calidion/node-weixin-api.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/calidion/node-weixin-api
+[travis-image]: https://travis-ci.org/JSSDKCN/node-weixin-api.svg?branch=master
+[travis-url]: https://travis-ci.org/JSSDKCN/node-weixin-api
+[daviddm-image]: https://david-dm.org/JSSDKCN/node-weixin-api.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/JSSDKCN/node-weixin-api
