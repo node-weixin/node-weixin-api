@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-api",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "微信公共平台Node库 API",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,8 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "index.js",
+    "lib"
   ],
   "keywords": [
     "weixin",
@@ -34,8 +35,10 @@
     "web-errors": "0.0.13"
   },
   "devDependencies": {
+    "body-parser": "^1.13.1",
     "browserify": "^9.0.3",
     "diff": "^1.4.0",
+    "express": "^4.13.0",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-nodeunit": "^0.4.1",
