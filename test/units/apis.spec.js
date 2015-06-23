@@ -177,20 +177,50 @@ describe("Weixin apis Test", function () {
         done();
       });
     });
+
+
+  });
+
+  it('should be able to get media count', function (done) {
+    weixin.auth.determine(function () {
+      weixin.api.media.count(function (error, json) {
+        assert.equal(true, validator.isNumeric(json.voice_count) && json.voice_count >= 0);
+        assert.equal(true, validator.isNumeric(json.video_count) && json.video_count >= 0);
+        assert.equal(true, validator.isNumeric(json.image_count) && json.image_count >= 0);
+        assert.equal(true, validator.isNumeric(json.news_count) && json.news_count >= 0);
+        done();
+      });
+    });
+  });
+
+  it('should be able to get media list', function (done) {
+    weixin.auth.determine(function () {
+      var type = 'image';   //Type of media
+      var offset = 0;       //
+      var limit = 5;        //Range from 1 ~ 20
+
+      weixin.api.media.list(type, limit, offset, function (error, json) {
+
+        assert.equal(true, validator.isNumeric(json.total_count) && json.total_count >= 0);
+        assert.equal(true, validator.isNumeric(json.item_count) && json.item_count >= 0);
+
+        for (var i = 0; i < json.item.length; i++) {
+          var item = json.item[i];
+          assert.equal(true, item.media_id.length > 0);
+        }
+        done();
+      });
+    });
   });
 
 
   //QRCode Functions
-
-  var ticket = null;
-
   it('should be able to create a temporary qrcode', function (done) {
     weixin.auth.determine(function () {
       weixin.api.qrcode.temporary.create(10, function (error, json) {
         assert.equal(true, validator.isURL(json.url));
         assert.equal(true, json.expire_seconds <= 7 * 3600 * 24);
         assert.equal(true, typeof json.ticket === 'string');
-        ticket = json.ticket;
         done();
       });
     });
@@ -204,7 +234,6 @@ describe("Weixin apis Test", function () {
         assert.equal(true, validator.isURL(json.url));
         assert.equal(true, json.expire_seconds <= 7 * 3600 * 24);
         assert.equal(true, typeof json.ticket === 'string');
-        ticket = json.ticket;
         done();
       });
     });
@@ -294,6 +323,39 @@ describe("Weixin apis Test", function () {
   });
 
   //JSSDK Ticket retrieving
+
+  it('should be able to signify a url', function (done) {
+    weixin.auth.determine(function () {
+      var url = "weixin.qq.com";
+      weixin.api.jssdk.signify(url, function (error, json) {
+        assert.equal(true, error === false);
+        assert.equal(true, weixin.api.jssdk.passed === false);
+        assert.equal(true, typeof json.jsapi_ticket === 'string');
+        assert.equal(true, typeof json.noncestr === 'string');
+        assert.equal(true, typeof json.timestamp === 'string');
+        assert.equal(true, json.url === url);
+        assert.equal(true, typeof json.signature === 'string');
+        done();
+      });
+    });
+  });
+
+  it('should be able to signify a url without request', function (done) {
+    weixin.auth.determine(function () {
+
+      var url = "weixin.qq.com";
+      weixin.api.jssdk.signify(url, function (error, json) {
+        assert.equal(true, weixin.api.jssdk.passed === true);
+        assert.equal(true, typeof json.jsapi_ticket === 'string');
+        assert.equal(true, typeof json.noncestr === 'string');
+        assert.equal(true, typeof json.timestamp === 'string');
+        assert.equal(true, json.url === url);
+        assert.equal(true, typeof json.signature === 'string');
+        done();
+      });
+    });
+  });
+
   it('should be able to retrieving JSSDK ticket', function (done) {
     weixin.auth.determine(function () {
 

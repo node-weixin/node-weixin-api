@@ -1,20 +1,20 @@
 var request = require('supertest');
-var assert = require("assert");
+//var assert = require("assert");
 var config = require('./../config');
 var weixin = require('./../../index');
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/weixin', function(req, res){
   weixin.callback.auth.ack(req, res);
 });
 
-weixin.auth.init(config);
+weixin.auth.init(config.app);
 
 describe('Weixin callbacks\' tests', function () {
 
@@ -44,7 +44,6 @@ describe('Weixin callbacks\' tests', function () {
     var token = config.appToken;
     var time = new Date().getTime();
     var nonce = 'nonce';
-    var echostr = 'Hello world!';
     var signature = weixin.auth.generateSignature(token, time, nonce);
     var data = {
       signature: signature,
