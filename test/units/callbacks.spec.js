@@ -1,6 +1,6 @@
 var request = require('supertest');
 //var assert = require("assert");
-var config = require('./../config');
+var config = require('./../config').app;
 var weixin = require('./../../index');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -14,7 +14,7 @@ app.post('/weixin', function(req, res){
   weixin.callback.auth.ack(req, res);
 });
 
-weixin.auth.init(config.app);
+weixin.auth.init(config);
 
 describe('Weixin callbacks\' tests', function () {
 
