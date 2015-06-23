@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.post('/weixin', function(req, res){
-  weixin.api.auth.ack(req, res);
+  weixin.callback.auth.ack(req, res);
 });
 
 weixin.auth.init(config);
