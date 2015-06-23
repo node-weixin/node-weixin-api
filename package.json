@@ -47,6 +47,7 @@
     "jshint-stylish": "^1.0.1",
     "load-grunt-tasks": "^3.1.0",
     "should": "^6.0.3",
+    "supertest": "^1.0.1",
     "time-grunt": "^1.1.0",
     "validator": "^3.40.1"
   }
