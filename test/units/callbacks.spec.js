@@ -4,6 +4,7 @@ var config = require('./../config').app;
 var weixin = require('./../../index');
 var express = require('express');
 var bodyParser = require('body-parser');
+var errors = require('web-errors').errors;
 
 var app = express();
 
@@ -54,7 +55,7 @@ describe('Weixin callbacks\' tests', function () {
       .post('/weixin')
       .send(data)
       .expect(200)
-      .expect('Input Invalid!')
+      .expect(errors.INPUT_INVALID)
       .end(done);
   });
 });

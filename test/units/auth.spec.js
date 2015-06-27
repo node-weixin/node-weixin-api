@@ -35,5 +35,32 @@ describe("Weixin Unit Test", function () {
     assert.equal(true, result === 'a=b&c=d');
     done();
   });
+
+  it('should be able to marshall params', function(done){
+    var params = {
+      a: 'b',
+      d: 'd',
+      c: 'd',
+      1: 'hello',
+
+    };
+    var result = weixin.auth.marshall(params);
+    assert.equal(true, result === '1=hello&a=b&c=d&d=d');
+    done();
+  });
+
+  it('should be able to get a pay signature', function(done){
+    var params = {
+      a: 'b',
+      d: 'd',
+      c: 'd',
+      1: 'hello',
+    };
+    var key = 'aa'
+    weixin.auth.merchant.init(1, 'aa', null);
+    var result = weixin.auth.pay.sign(params);
+    assert.equal(true, result === 'B6D97C5339B55A396D5DD89D1BE6DD17');
+    done();
+  });
 });
 

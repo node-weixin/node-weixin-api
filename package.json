@@ -23,16 +23,18 @@
   "license": "MIT",
   "files": [
     "index.js",
-    "lib"
+    "lib",
+    "validate-config"
   ],
   "keywords": [
     "weixin",
     "wechat"
   ],
   "dependencies": {
-    "req-validator": "0.0.7",
+    "node-form-validator": "^0.1.0",
+    "node-xml2json": "^1.0.0",
     "request": "^2.53.0",
-    "web-errors": "0.0.13"
+    "web-errors": "^0.1.2"
   },
   "devDependencies": {
     "body-parser": "^1.13.1",
