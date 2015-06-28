@@ -1,6 +1,7 @@
 var assert = require("assert");
 var config = require('./../config').app;
 var weixin = require('./../../index');
+var errors = require('web-errors').errors;
 
 
 describe("Weixin Unit Test", function () {
@@ -54,12 +55,54 @@ describe("Weixin Unit Test", function () {
       a: 'b',
       d: 'd',
       c: 'd',
-      1: 'hello',
+      1: 'hello'
     };
-    var key = 'aa'
     weixin.auth.merchant.init(1, 'aa', null);
     var result = weixin.auth.pay.sign(params);
     assert.equal(true, result === 'B6D97C5339B55A396D5DD89D1BE6DD17');
+    done();
+  });
+
+  it('should be able to validate auth info ', function(done){
+    var params = {}, result;
+    weixin.auth.merchant.init(1, 'aa', null);
+    result = weixin.auth.pay.validate(params);
+    assert.equal(true, result === errors.ERROR);
+    params = {
+      appid: 'appid',
+      mch_id: 'mch_id',
+      device_info: 'device_info',
+      nonce_str: 'nonce_str'
+    };
+    result = weixin.auth.pay.validate(params);
+
+    assert.equal(true, result === errors.APP_ID_ERROR);
+
+    params = {
+      appid: weixin.auth.appId,
+      mch_id: 'mch_id',
+      device_info: 'device_info',
+      nonce_str: 'nonce_str'
+    };
+
+    result = weixin.auth.pay.validate(params);
+    assert.equal(true, result === errors.MERCHANT_ID_ERROR);
+
+    params = {
+      appid: weixin.auth.appId,
+      mch_id: 1,
+      device_info: 'device_info',
+      nonce_str: 'nonce_str'
+    };
+    result = weixin.auth.pay.validate(params);
+
+    assert.equal(true, result === true);
+    var data = {};
+    result = weixin.auth.pay.validate(data);
+    assert.equal(true, result === errors.ERROR);
+    data = weixin.auth.pay.prepare(data);
+    result = weixin.auth.pay.validate(data);
+    assert.equal(true, result === true);
     done();
   });
 });
