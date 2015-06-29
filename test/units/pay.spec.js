@@ -22,7 +22,7 @@ describe("Weixin Pay Test", function () {
     weixin.api.pay.handle(function(error, data) {
       assert.equal(true, error === errors.ERROR);
       assert.equal(true, data === 'FAIL');
-    }, false, back, config.creation.receiving);
+    }, false, back, config.unified.receiving);
 
     //Case SUCCESS
     back = {
@@ -44,7 +44,7 @@ describe("Weixin Pay Test", function () {
         validator.isURL(data.code_url);
       }
 
-    }, false, back, config.creation.receiving);
+    }, false, back, config.unified.receiving);
     done();
   });
 });

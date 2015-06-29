@@ -35,7 +35,9 @@
     "node-form-validator": "^0.1.2",
     "node-xml2json": "^1.0.0",
     "request": "^2.53.0",
-    "web-errors": "^0.1.3"
+    "validator": "^3.40.1",
+    "web-errors": "^0.1.3",
+    "xml2json": "^0.7.1"
   },
   "devDependencies": {
     "body-parser": "^1.13.1",
