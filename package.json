@@ -31,6 +31,7 @@
     "wechat"
   ],
   "dependencies": {
+    "json2xml": "^0.1.2",
     "lodash": "^3.9.3",
     "node-form-validator": "^0.1.2",
     "node-xml2json": "^1.0.0",
