@@ -1,8 +1,3 @@
-var fs = require('fs')
-  , path = require('path')
-  , certFile = path.resolve(__dirname, '../cert/apiclient_cert.pem')
-  , keyFile = path.resolve(__dirname, '../cert/apiclient_key.pem');
-
 
 module.exports = {
   app: {
@@ -14,8 +9,8 @@ module.exports = {
     id: '123',
     key: '212',
     ssl: {
-      cert: fs.readFileSync(certFile),
-      key: fs.readFileSync(keyFile)
+      cert: null,
+      key: null
     }
   },
   jssdk: {
