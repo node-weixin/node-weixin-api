@@ -59,7 +59,8 @@ describe("Weixin Unit Test", function () {
     };
     weixin.auth.merchant.init(1, 'aa', null);
     var result = weixin.auth.pay.sign(params);
-    assert.equal(true, result === 'B6D97C5339B55A396D5DD89D1BE6DD17');
+    console.log(result);
+    assert.equal(true, result === '19FEA8EEC24348FB8F9E10AA6FC97A03');
     done();
   });
 

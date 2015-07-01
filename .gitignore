@@ -7,3 +7,5 @@ coverage
 .project
 .settings
 test/output/*.jpg
+cert
+test/private
