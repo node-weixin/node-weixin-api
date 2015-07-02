@@ -56,9 +56,7 @@ describe("Weixin Pay Test", function () {
     var data = require('../private/data').unifiedOrder;
 
     it('should be able to send a unifiedOrder pay request', function (done) {
-      var path = require('path');
       weixin.auth.init(prod);
-
       weixin.auth.merchant.init(merchantConfig.id, merchantConfig.key, merchantConfig.ssl);
 
       weixin.api.pay.unifiedOrder(data, function (error, data) {
