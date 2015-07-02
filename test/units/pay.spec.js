@@ -1,11 +1,10 @@
 var assert = require("assert");
 var fs = require('fs');
+var path = require('path');
 var weixin = require('./../../index');
-
 var validator = require('validator');
 var errors = require("web-errors").errors;
 var config = require("./../../lib/validate-config/index").pay;
-
 
 describe("Weixin Pay Test", function () {
 
@@ -48,22 +47,19 @@ describe("Weixin Pay Test", function () {
     done();
   });
 
-  it('should be able to send a unifiedOrder pay request', function (done) {
-    var path = require('path');
 
-    if (fs.existsSync(path.resolve(__dirname, '../private/merchant.js')) &&
-      fs.existsSync(path.resolve(__dirname, '../private/prod.js')) &&
-      fs.existsSync(path.resolve(__dirname, '../private/data.js'))) {
+  if (fs.existsSync(path.resolve(__dirname, '../private/merchant.js')) &&
+    fs.existsSync(path.resolve(__dirname, '../private/prod.js')) &&
+    fs.existsSync(path.resolve(__dirname, '../private/data.js'))) {
+    var merchantConfig = require('../private/merchant');
+    var prod = require("../private/prod");
+    var data = require('../private/data').unifiedOrder;
 
-      var merchantConfig = require('../private/merchant');
-
-      var prod = require("../private/prod");
-
+    it('should be able to send a unifiedOrder pay request', function (done) {
+      var path = require('path');
       weixin.auth.init(prod);
 
       weixin.auth.merchant.init(merchantConfig.id, merchantConfig.key, merchantConfig.ssl);
-
-      var data = require('../private/data').unifiedOrder;
 
       weixin.api.pay.unifiedOrder(data, function (error, data) {
         assert.equal(true, error === errors.SUCCESS);
@@ -71,9 +67,10 @@ describe("Weixin Pay Test", function () {
         assert.equal(true, data.prepay_id !== null);
         done();
       });
-    } else {
-      console.log("not exist");
+    });
+
+    it('should be able to query orders', function (done) {
       done();
-    }
-  });
+    });
+  }
 });

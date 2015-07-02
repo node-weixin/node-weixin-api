@@ -48,6 +48,54 @@ weixin.api.menu.remove
 
 //同时也欢迎对没有完善的接口提交pull request
 
+
+//微信OAuth 代码(以支持expressjs的服务器为例)
+```js
+
+  //Oauth 2 init page
+  //用户第一次访问时代码
+  auth: function (req, res) {
+    var redirect_uri = oauth.redirectUrl;
+    var state = 'YOUR_STATE';
+    var params = {
+      appid: config.YOUR_APPID,
+      redirect_uri: config.YOUR_REDIRECT_URL,
+      response_type: 'code',
+      scope: 'snsapi_base',
+      state: state,
+      connect_redirect: 1
+    };
+    var url = weixin.api.user.oauth.buildUrl(params);
+    res.redirect(url);
+  },
+
+  //Oauth 2 redirect page
+  //微信通过后的代码,由code获取openid
+  authback: function (req, res) {
+    var code = req.param('code');
+    var state = req.param('state');
+    if (!code) {
+      res.redirect(YOUR_REDIRECT_URL);
+      return;
+    }
+
+
+    weixin.api.user.oauth.authorize(code, state, function (error, json) {
+      if (error) {
+        res.notFound();
+      } else {
+        if (json.openid) {
+
+          req.session.YOUR_OPENID_SAVE_NAME = json.openid;
+          res.redirect(YOUR_REDIRECT_URL);
+          return;
+        }
+        res.redirect(YOUR_REDIRECT_URL_FAILED);
+      }
+    });
+  }
+```
+
 ```
 
 ```sh
