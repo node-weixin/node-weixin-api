@@ -50,7 +50,6 @@ weixin.api.menu.remove
 
 
 //微信OAuth 代码(以支持expressjs的服务器为例)
-```js
 
   //Oauth 2 init page
   //用户第一次访问时代码
@@ -94,8 +93,6 @@ weixin.api.menu.remove
       }
     });
   }
-```
-
 ```
 
 ```sh
