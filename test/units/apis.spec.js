@@ -356,6 +356,23 @@ describe("Weixin apis Test", function () {
     });
   });
 
+  it('should be able to prepare a json for js', function (done) {
+    weixin.auth.determine(function () {
+
+      var url = "weixin.qq.com";
+      weixin.api.jssdk.prepare(function (error, json) {
+        var errors = require('web-errors').errors;
+        assert.equal(true, error === errors.SUCCESS);
+        assert.equal(true, json.appId === weixin.config.app.appId);
+        assert.equal(true, typeof json.signature === 'string');
+        assert.equal(true, json.signature.length <= 64);
+        assert.equal(true, typeof json.nonceStr === 'string');
+        assert.equal(true, typeof json.timestamp === 'string' && validator.isNumeric(json.timestamp));
+        done();
+      });
+    });
+  });
+
   it('should be able to retrieving JSSDK ticket', function (done) {
     weixin.auth.determine(function () {
 
