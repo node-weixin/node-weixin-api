@@ -105,9 +105,86 @@ weixin.auth.determine(function() {
 
 ```
 
+###网页Oauth相关
+
+#### 1. 生成访问微信URL
+
+```js
+  auth: function (req, res) {
+    var url = weixin.oauth.createURL('init', 1);
+    res.redirect(url);
+  }
+```
+
+#### 2. 微信验证成功后返回处理
+
+```
+  authback: function (req, res) {
+    weixin.callback.oauth.success(req, res, function(json) {
+    
+      //得到用户的openid
+      req.session.wxopenid = json.openid;
+      req.session.accessToken = json.access_token;
+      req.session.refreshToken = json.refresh_token;
+    });
+  }
+```
+
+###jssdk 相关API
+
+#### 1. 获取jssdk的配置信息
+
+```js
+      weixin.api.jssdk.prepare(function (error, json) {
+        var errors = require('web-errors').errors;
+        //json就是配置信息
+        //可以直接返回给js
+      });
+```
+
+#### 2. 创建一次统一支付请求的js配置
+
+```js
+      var data = {};
+      
+      //上次保存的openid信息
+      data.openid = req.session.wxopenid;
+      
+      //支付相关的信息
+      data.body = 'description';
+      data.out_trade_no = order.id;
+      data.total_fee = (order.summary * 100).toFixed(0);
+      data.notify_url = sails.config.weixin.urls.notify;
+      data.trade_type = type || 'JSAPI';
+
+      // mostly useless
+      //data.sub_mch_id = 'xxx'
+      //data.device_info = 'xxx'
+      //data.attach = 'xxx'
+      //data.time_start = 'xxx'
+      //data.time_expire = 'xxx'
+      //data.goods_tag = 'xxx'
+      //data.product_id = 'xxx'
+      //data.attach = 'xxx'
+      console.log(data);
+      console.log('pay');
+
+      weixin.api.pay.unifiedOrder(data, function (error, data) {
+        if (error.code) {
+          api(errors.ERROR, res, error);
+          return;
+        }
+        var prepayId = data.prepay_id;
+        var data = weixin.api.jssdk.prepay(data.prepay_id);
+        //data就是这次的配置信息
+        api(errors.SUCCESS, res, data);
+      });
+```
+
+
 ###各类基本API
 
-####获取服务器IP
+#### 1. 获取服务器IP
 
 ```js
 
@@ -119,7 +196,7 @@ weixin.auth.determine(function() {
   
 ```
 
-####获取公共号菜单
+#### 2. 获取公共号菜单
 
 ```js
 
@@ -132,7 +209,7 @@ weixin.auth.determine(function() {
     
 ```
 
-####获取自定义菜单
+#### 3. 获取自定义菜单
 
 ```js
 
@@ -146,7 +223,7 @@ weixin.auth.determine(function() {
     
 ```
 
-####删除菜单
+#### 4. 删除菜单
 
 ```js
 
@@ -159,7 +236,7 @@ weixin.auth.determine(function() {
     
 ```
 
-####更新菜单
+#### 5. 更新菜单
 
 ```js
     weixin.auth.determine(function () {
@@ -202,7 +279,7 @@ weixin.auth.determine(function() {
 
 ```
 
-####上传临时媒体
+#### 6. 上传临时媒体
 
 ```js
 
@@ -218,7 +295,7 @@ weixin.auth.determine(function() {
 
 ```
 
-####下载临时媒体
+#### 7. 下载临时媒体
 
 ```js
     weixin.auth.determine(function () {
@@ -229,7 +306,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####上传永久媒体
+#### 8. 上传永久媒体
 
 ```js
     weixin.auth.determine(function () {
@@ -241,7 +318,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####下载永久媒体
+#### 9. 下载永久媒体
 
 ```js
     weixin.auth.determine(function () {
@@ -253,7 +330,7 @@ weixin.auth.determine(function() {
 ```
 
 
-####创建图文消息
+#### 10. 创建图文消息
 
 ```js
     weixin.auth.determine(function () {
@@ -275,7 +352,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####获取媒体总数
+#### 11. 获取媒体总数
 
 ```js
     weixin.auth.determine(function () {
@@ -288,7 +365,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####获取媒体类型列表
+#### 12. 获取媒体类型列表
 
 ```js
     weixin.auth.determine(function () {
@@ -305,7 +382,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####创建临时二维码
+#### 13. 创建临时二维码
 
 ```js
     weixin.auth.determine(function () {
@@ -318,7 +395,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####创建永久二维码
+#### 14. 创建永久二维码
 
 ```js
     weixin.auth.determine(function () {
@@ -330,7 +407,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####创建永久字符二维码
+#### 15. 创建永久字符二维码
 
 ```js
     weixin.auth.determine(function () {
@@ -343,7 +420,7 @@ weixin.auth.determine(function() {
 ```
 
 
-####创建短链接
+#### 16. 创建短链接
 
 ```js
     weixin.auth.determine(function () {
@@ -356,7 +433,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####获取用户信息
+#### 17. 获取用户信息
 ```js
     weixin.auth.determine(function () {
       var openid = '';
@@ -367,7 +444,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####获取用户列表
+#### 18. 获取用户列表
 
 ```js
     var nextOpenId = null;
@@ -384,7 +461,7 @@ weixin.auth.determine(function() {
     });
 ```
 
-####获取下一批用户列表
+#### 19. 获取下一批用户列表
 
 ```js
       weixin.api.user.list(nextOpenId, function (error, json) {
@@ -394,83 +471,6 @@ weixin.auth.determine(function() {
           //json.data.openid
           nextOpenId = json.next_openid;
         }
-      });
-```
-
-
-###网页Oauth相关
-
-####生成访问微信URL
-
-```js
-  auth: function (req, res) {
-    var url = weixin.oauth.createURL('init', 1);
-    res.redirect(url);
-  }
-```
-
-####微信验证成功后返回处理
-
-```
-  authback: function (req, res) {
-    weixin.callback.oauth.success(req, res, function(json) {
-    
-      //得到用户的openid
-      req.session.wxopenid = json.openid;
-      req.session.accessToken = json.access_token;
-      req.session.refreshToken = json.refresh_token;
-    });
-  }
-```
-
-###jssdk 相关API
-
-####获取jssdk的配置信息
-
-```js
-      weixin.api.jssdk.prepare(function (error, json) {
-        var errors = require('web-errors').errors;
-        //json就是配置信息
-        //可以直接返回给js
-      });
-```
-
-####创建一次统一支付请求的js配置
-
-```js
-      var data = {};
-      
-      //上次保存的openid信息
-      data.openid = req.session.wxopenid;
-      
-      //支付相关的信息
-      data.body = 'description';
-      data.out_trade_no = order.id;
-      data.total_fee = (order.summary * 100).toFixed(0);
-      data.notify_url = sails.config.weixin.urls.notify;
-      data.trade_type = type || 'JSAPI';
-
-      // mostly useless
-      //data.sub_mch_id = 'xxx'
-      //data.device_info = 'xxx'
-      //data.attach = 'xxx'
-      //data.time_start = 'xxx'
-      //data.time_expire = 'xxx'
-      //data.goods_tag = 'xxx'
-      //data.product_id = 'xxx'
-      //data.attach = 'xxx'
-      console.log(data);
-      console.log('pay');
-
-      weixin.api.pay.unifiedOrder(data, function (error, data) {
-        if (error.code) {
-          api(errors.ERROR, res, error);
-          return;
-        }
-        var prepayId = data.prepay_id;
-        var data = weixin.api.jssdk.prepay(data.prepay_id);
-        //data就是这次的配置信息
-        api(errors.SUCCESS, res, data);
       });
 ```
 
