@@ -226,19 +226,6 @@ describe("Weixin apis Test", function () {
     });
   });
 
-
-  it('should be able to get the temporary qrcode', function (done) {
-    weixin.auth.determine(function () {
-
-      weixin.api.qrcode.temporary.create(10, function (error, json) {
-        assert.equal(true, validator.isURL(json.url));
-        assert.equal(true, json.expire_seconds <= 7 * 3600 * 24);
-        assert.equal(true, typeof json.ticket === 'string');
-        done();
-      });
-    });
-  });
-
   it('should be able to create a permanent qrcode', function (done) {
     weixin.auth.determine(function () {
 
