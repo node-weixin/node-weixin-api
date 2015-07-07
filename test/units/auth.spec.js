@@ -4,7 +4,7 @@ var weixin = require('./../../index');
 var errors = require('web-errors').errors;
 
 
-describe("Weixin Unit Test", function () {
+describe("Auth/Oauth Unit Test", function () {
   var signature;
   var timestamp = new Date();
   var nonce = 'sdfsdsdfsdf';
@@ -103,6 +103,13 @@ describe("Weixin Unit Test", function () {
     data = weixin.auth.pay.prepare(data);
     result = weixin.auth.pay.validate(data);
     assert.equal(true, result === true);
+    done();
+  });
+
+  it('should create oauth url ', function(done){
+    var url = weixin.oauth.createURL('init', 1, 1);
+    var genUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0201661ce8fb3e11&redirect_uri=http%3A%2F%2Foauth.domain.com%2Fweixin%2Fback&response_type=code&scope=snsapi_userinfo&state=init#wechat_redirect';
+    assert(genUrl === url);
     done();
   });
 });

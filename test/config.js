@@ -6,13 +6,27 @@ module.exports = {
     appToken: 'didsosdifsofisdofisfosjfosjfsodf',
   },
   merchant: {
-    id: '123',
-    key: '212',
+    id: 1345,
+    key: '12344',
     ssl: {
-      cert: null,
-      key: null
+      cert: 'doddo',
+      key: 'sosos'
     }
   },
+  urls: {
+    js: {
+      main: 'http://jspay.domain.com/'
+    },
+    oauth: {
+      //用户首次访问的URL地址
+      init: 'http://oauth.domain.com/weixin/init',
+      //用户通过验证后的返回地址
+      redirect: 'http://oauth.domain.com/weixin/back',
+      //成功获取用户openid后的地址
+      success: 'http://pay.domain.com/successAndReadyToPay'
+    }
+  },
+
   jssdk: {
     apiList: [
      'onMenuShareTimeline',
