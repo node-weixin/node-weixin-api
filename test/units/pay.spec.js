@@ -66,9 +66,5 @@ describe("Weixin Pay Test", function () {
         done();
       });
     });
-
-    it('should be able to query orders', function (done) {
-      done();
-    });
   }
 });

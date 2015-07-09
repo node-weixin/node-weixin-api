@@ -16,6 +16,28 @@ Weixin API for node
 $ npm install --save node-weixin-api
 ```
 
+##测试注意
+
+在test目录创建private/app.js文件
+
+```
+module.exports = {
+  app: {
+    appId: '',
+    appSecret: '',
+    appToken: '',
+  },
+  merchant: {
+    id: '123',
+    key: '212',
+    ssl: {
+      cert: null,
+      key: null
+    }
+  }
+};
+```
+
 
 ## 使用
 

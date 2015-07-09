@@ -1,10 +1,25 @@
 var request = require('supertest');
 //var assert = require("assert");
-var config = require('./../config').app;
+//var config = require('./../config').app;
 var weixin = require('./../../index');
 var express = require('express');
 var bodyParser = require('body-parser');
 var errors = require('web-errors').errors;
+
+
+var config = null;
+var fs = require('fs');
+var path = require('path');
+
+if (fs.existsSync(path.resolve(__dirname, '../private/app.js'))) {
+  config = require('../private/app').app;
+} else {
+  config = {
+    appId: process.env.APP_ID,
+    appSecret: process.env.APP_SECRET,
+    appToken: process.env.APP_TOKEN,
+  };
+}
 
 var app = express();
 

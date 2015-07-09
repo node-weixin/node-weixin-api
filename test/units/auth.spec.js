@@ -1,8 +1,20 @@
 var assert = require("assert");
-var config = require('./../config').app;
+var config = null;
 var weixin = require('./../../index');
 var errors = require('web-errors').errors;
 
+var fs = require('fs');
+var path = require('path');
+
+if (fs.existsSync(path.resolve(__dirname, '../private/app.js'))) {
+  config = require('../private/app').app;
+} else {
+  config = {
+    appId: process.env.APP_ID,
+    appSecret: process.env.APP_SECRET,
+    appToken: process.env.APP_TOKEN,
+  };
+}
 
 describe("Weixin Unit Test", function () {
   var signature;
