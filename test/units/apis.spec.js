@@ -226,19 +226,6 @@ describe("Weixin apis Test", function () {
     });
   });
 
-
-  it('should be able to get the temporary qrcode', function (done) {
-    weixin.auth.determine(function () {
-
-      weixin.api.qrcode.temporary.create(10, function (error, json) {
-        assert.equal(true, validator.isURL(json.url));
-        assert.equal(true, json.expire_seconds <= 7 * 3600 * 24);
-        assert.equal(true, typeof json.ticket === 'string');
-        done();
-      });
-    });
-  });
-
   it('should be able to create a permanent qrcode', function (done) {
     weixin.auth.determine(function () {
 
@@ -354,6 +341,33 @@ describe("Weixin apis Test", function () {
         done();
       });
     });
+  });
+
+  it('should be able to prepare a json for jssdk', function (done) {
+      weixin.api.jssdk.prepare(function (error, json) {
+        var errors = require('web-errors').errors;
+        assert.equal(true, error === errors.SUCCESS);
+        assert.equal(true, json.appId === weixin.config.app.appId);
+        assert.equal(true, typeof json.signature === 'string');
+        assert.equal(true, json.signature.length <= 64);
+        assert.equal(true, typeof json.nonceStr === 'string');
+        assert.equal(true, typeof json.timestamp === 'string' && validator.isNumeric(json.timestamp));
+        done();
+      });
+  });
+
+  it('should be able to get a prepay config', function (done) {
+    var data = weixin.api.jssdk.prepay('wx193939393');
+    assert.equal(true, data.appId === weixin.config.app.appId);
+    assert.equal(true, !!new Date(data.timeStamp * 1000));
+    assert.equal(true, data.package === 'prepay_id=wx193939393');
+    assert.equal(true, typeof data.nonceStr === 'string');
+    assert.equal(true, data.nonceStr.length === 32);
+    assert.equal(true, data.signType === 'MD5');
+    var sign = data.paySign;
+    delete data.paySign;
+    assert.equal(true, sign === weixin.auth.pay.sign(data));
+    done();
   });
 
   it('should be able to retrieving JSSDK ticket', function (done) {
