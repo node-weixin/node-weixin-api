@@ -344,6 +344,11 @@ describe("Weixin apis Test", function () {
   });
 
   it('should be able to prepare a json for jssdk', function (done) {
+    weixin.config.urls = {
+      js: {
+        main: "http://oauth.domain.com/weixin/back"
+      }
+    };
       weixin.api.jssdk.prepare(function (error, json) {
         var errors = require('web-errors').errors;
         assert.equal(true, error === errors.SUCCESS);
