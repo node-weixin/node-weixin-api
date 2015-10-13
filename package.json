@@ -35,7 +35,8 @@
     "node-weixin-media": "^0.0.1",
     "node-weixin-menu": "^0.0.3",
     "node-weixin-oauth": "^0.1.1",
-    "node-weixin-pay": "^0.1.5"
+    "node-weixin-pay": "^0.1.5",
+    "node-weixin-user": "0.0.1"
   },
   "devDependencies": {
     "grunt-cli": "^0.1.13",

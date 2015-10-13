@@ -6,4 +6,5 @@ module.exports = {
   menu: require('node-weixin-menu'),
   link: require('node-weixin-link'),
   jssdk: require('node-weixin-jssdk'),
+  user: require('node-weixin-user')
 };
