@@ -51,12 +51,19 @@ Weixin API for node
 ## 集成的模块有：
 
   [weixin.auth](https://github.com/node-weixin/node-weixin-auth)
+  
   [weixin.oauth](https://github.com/node-weixin/node-weixin-oauth)
+  
   [weixin.user](https://github.com/node-weixin/node-weixin-user)
+  
   [weixin.pay](https://github.com/node-weixin/node-weixin-pay)
+  
   [weixin.jssdk](https://github.com/node-weixin/node-weixin-jssdk)
+  
   [weixin.menu](https://github.com/node-weixin/node-weixin-menu)
+  
   [weixin.media](https://github.com/node-weixin/node-weixin-media)
+  
   [weixin.link](https://github.com/node-weixin/node-weixin-link)
   
   
