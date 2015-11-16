@@ -1,11 +1,8 @@
 {
   "name": "node-weixin-api",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Nodejs微信公共平台API",
   "main": "index.js",
-  "scripts": {
-    "test": "grunt"
-  },
   "author": {
     "name": "calidion",
     "email": "calidion@gmail.com",
@@ -29,14 +26,14 @@
     "api"
   ],
   "dependencies": {
-    "node-weixin-auth": "^0.1.2",
-    "node-weixin-jssdk": "^0.1.1",
-    "node-weixin-link": "0.0.3",
-    "node-weixin-media": "^0.0.1",
-    "node-weixin-menu": "^0.0.3",
-    "node-weixin-oauth": "^0.1.1",
-    "node-weixin-pay": "^0.1.5",
-    "node-weixin-user": "0.0.1"
+    "node-weixin-auth": "^0.2.0",
+    "node-weixin-jssdk": "^0.2.0",
+    "node-weixin-link": "^0.2.0",
+    "node-weixin-media": "^0.2.0",
+    "node-weixin-menu": "^0.2.0",
+    "node-weixin-oauth": "^0.2.0",
+    "node-weixin-pay": "^0.2.1",
+    "node-weixin-user": "^0.2.0"
   },
   "devDependencies": {
     "grunt-cli": "^0.1.13",
@@ -44,10 +41,16 @@
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-cli": "^1.12.0",
+    "istanbul": "^0.4.0",
     "jshint-stylish": "^1.0.1",
     "load-grunt-tasks": "^3.1.0",
+    "mocha": "^2.3.4",
     "should": "^6.0.3",
     "time-grunt": "^1.1.0",
     "validator": "^3.40.1"
+  },
+  "scripts": {
+    "test": "grunt",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
   }
 }
