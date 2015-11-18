@@ -79,10 +79,9 @@ $ npm install --save node-weixin-api
 ```js
 var api = require("node-weixin-api");
 
-//var auth = api.auth             //如果只有一个用户，可以使用这种方法，但不推荐
-var auth = api.auth.create();     //多个用户使用这种方法
 
 
+// App信息是基本的配置信息
 var app = {
   id: process.env.APP_ID,
   secret: process.env.APP_SECRET,
@@ -92,8 +91,9 @@ var app = {
 var config = require("node-weixin-config");
 config.app.init(app);
 
-///直接调用即可
-api.user.list(app, auth, null, function (error, data) {
+///api.auth直接使用即可, api里的对象直接根本api调用即可。
+
+api.user.list(app, api.auth, null, function (error, data) {
 });
 ```
 

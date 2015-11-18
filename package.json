@@ -46,6 +46,7 @@
     "jshint-stylish": "^1.0.1",
     "load-grunt-tasks": "^3.1.0",
     "mocha": "^2.3.4",
+    "node-weixin-config": "^0.2.0",
     "should": "^6.0.3",
     "time-grunt": "^1.1.0",
     "validator": "^3.40.1"
