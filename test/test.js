@@ -11,7 +11,8 @@ describe("weixin test", function () {
       'pay',
       'link',
       'auth',
-      'oauth'
+      'oauth',
+      'message'
     ];
     for (var i = 0; i < modules.length; i++) {
       var module = modules[i];

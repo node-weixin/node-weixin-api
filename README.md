@@ -75,32 +75,12 @@ $ npm install --save node-weixin-api
 
 ## 使用
 
-
-```js
-var api = require("node-weixin-api");
-
-
-
-// App信息是基本的配置信息
-var app = {
-  id: process.env.APP_ID,
-  secret: process.env.APP_SECRET,
-  token: process.env.APP_TOKEN
-};
-
-var config = require("node-weixin-config");
-config.app.init(app);
-
-///api.auth直接使用即可, api里的对象直接根本api调用即可。
-
-api.user.list(app, api.auth, null, function (error, data) {
-});
-```
+请参考各API的README文件指导
 
 
 ## License
 
-MIT © [calidion](blog.3gcnbeta.com)
+MIT © [node-weixin](www.node-weixin.com)
 
 
 [npm-image]: https://badge.fury.io/js/node-weixin-api.svg

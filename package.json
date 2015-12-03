@@ -26,14 +26,15 @@
     "api"
   ],
   "dependencies": {
-    "node-weixin-auth": "^0.2.2",
-    "node-weixin-jssdk": "^0.2.0",
-    "node-weixin-link": "^0.2.0",
-    "node-weixin-media": "^0.2.0",
-    "node-weixin-menu": "^0.2.0",
-    "node-weixin-oauth": "^0.2.0",
-    "node-weixin-pay": "^0.2.2",
-    "node-weixin-user": "^0.2.0"
+    "node-weixin-auth": "^0.2.3",
+    "node-weixin-jssdk": "^0.2.1",
+    "node-weixin-link": "^0.3.1",
+    "node-weixin-media": "^0.2.1",
+    "node-weixin-menu": "^0.2.2",
+    "node-weixin-message": "0.0.3",
+    "node-weixin-oauth": "^0.2.1",
+    "node-weixin-pay": "^0.2.3",
+    "node-weixin-user": "^0.2.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
