@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-api",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Nodejs微信公共平台API",
   "main": "index.js",
   "author": {
@@ -33,7 +33,7 @@
     "node-weixin-menu": "^0.2.2",
     "node-weixin-message": "0.0.3",
     "node-weixin-oauth": "^0.2.1",
-    "node-weixin-pay": "^0.2.3",
+    "node-weixin-pay": "^0.2.4",
     "node-weixin-user": "^0.2.1"
   },
   "devDependencies": {
