@@ -47,6 +47,8 @@ Weixin API for node
 
  11. [node-weixin-link](https://github.com/node-weixin/node-weixin-link)
     微信推广相关的操作
+ 12.  [weixin.message](https://github.com/node-weixin/node-weixin-message)
+    微信消息处理模块
     
 ## 集成的模块有：
 
@@ -66,6 +68,7 @@ Weixin API for node
   
   [weixin.link](https://github.com/node-weixin/node-weixin-link)
   
+  [weixin.message](https://github.com/node-weixin/node-weixin-message)
   
 ## 安装
 
