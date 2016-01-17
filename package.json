@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-api",
-  "version": "0.2.9",
+  "version": "0.3.0-beta",
   "description": "Nodejs微信公共平台API",
   "main": "index.js",
   "author": {
@@ -26,15 +26,15 @@
     "api"
   ],
   "dependencies": {
-    "node-weixin-auth": "^0.2.7",
-    "node-weixin-jssdk": "^0.2.4",
+    "node-weixin-auth": "^0.3.0",
+    "node-weixin-jssdk": "^0.3.0",
     "node-weixin-link": "^0.3.2",
-    "node-weixin-media": "^0.2.2",
-    "node-weixin-menu": "^0.2.3",
-    "node-weixin-message": "0.0.4",
+    "node-weixin-media": "^0.3.0",
+    "node-weixin-menu": "^0.3.0",
+    "node-weixin-message": "0.0.5",
     "node-weixin-oauth": "^0.2.1",
     "node-weixin-pay": "^0.2.4",
-    "node-weixin-user": "^0.2.2"
+    "node-weixin-user": "^0.3.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -42,15 +42,15 @@
     "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-cli": "^1.12.0",
+    "grunt-mocha-cli": "^2.0.0",
     "istanbul": "^0.4.0",
-    "jshint-stylish": "^1.0.1",
+    "jshint-stylish": "^2.1.0",
     "load-grunt-tasks": "^3.1.0",
     "mocha": "^2.3.4",
     "node-weixin-config": "^0.2.0",
-    "should": "^6.0.3",
+    "should": "^8.1.1",
     "time-grunt": "^1.1.0",
-    "validator": "^3.40.1"
+    "validator": "^4.5.0"
   },
   "scripts": {
     "test": "grunt",
