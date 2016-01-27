@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-api",
-  "version": "0.3.0-beta",
+  "version": "0.3.0",
   "description": "Nodejs微信公共平台API",
   "main": "index.js",
   "author": {
