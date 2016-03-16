@@ -1,11 +1,2 @@
-/node_modules/
-npm-debug.log
-example
-.DS_Store
+node_modules
 coverage
-.idea
-.project
-.settings
-test/output/*.jpg
-cert
-test/private

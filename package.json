@@ -1,59 +1,52 @@
 {
   "name": "node-weixin-api",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "description": "Nodejs微信公共平台API",
-  "main": "index.js",
+  "homepage": "",
   "author": {
     "name": "calidion",
     "email": "calidion@gmail.com",
-    "url": "blog.3gcnbeta.com"
+    "url": "calidion.github.io"
   },
-  "readmeFilename": "README.md",
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/node-weixin/node-weixin-api.git"
-  },
-  "license": "MIT",
   "files": [
-    "index.js"
+    "lib"
   ],
+  "main": "lib/index.js",
   "keywords": [
-    "weixin",
-    "wechat",
-    "api"
+    ""
   ],
   "dependencies": {
-    "node-weixin-auth": "^0.3.0",
-    "node-weixin-jssdk": "^0.3.0",
-    "node-weixin-link": "^0.3.2",
-    "node-weixin-media": "^0.3.0",
-    "node-weixin-menu": "^0.3.0",
-    "node-weixin-message": "0.0.5",
-    "node-weixin-oauth": "^0.2.1",
-    "node-weixin-pay": "^0.2.4",
-    "node-weixin-user": "^0.3.0"
+    "node-weixin-auth": "^0.5.0",
+    "node-weixin-jssdk": "^0.4.0",
+    "node-weixin-link": "^0.4.0",
+    "node-weixin-media": "^0.4.0",
+    "node-weixin-menu": "^0.5.0",
+    "node-weixin-message": "0.0.6",
+    "node-weixin-oauth": "^0.3.0",
+    "node-weixin-pay": "^0.3.0",
+    "node-weixin-user": "^0.5.0"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-cli": "^2.0.0",
-    "istanbul": "^0.4.0",
-    "jshint-stylish": "^2.1.0",
-    "load-grunt-tasks": "^3.1.0",
-    "mocha": "^2.3.4",
-    "node-weixin-config": "^0.2.0",
-    "should": "^8.1.1",
-    "time-grunt": "^1.1.0",
-    "validator": "^4.5.0"
+    "eslint-config-xo-space": "^0.11.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-coveralls": "^0.1.0"
   },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "node-weixin/node-weixin-api",
   "scripts": {
-    "test": "grunt",
-    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
-  }
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "Apache-2.0"
 }
