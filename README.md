@@ -1,15 +1,27 @@
-# node-weixin-api [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Beerpay](https://beerpay.io/node-weixin/node-weixin-api/badge.svg?style=flat-square)](https://beerpay.io/node-weixin/node-weixin-api)
+# node-weixin-api 
 
-Weixin API for node
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Beerpay](https://beerpay.io/node-weixin/node-weixin-api/badge.svg?style=flat-square)](https://beerpay.io/node-weixin/node-weixin-api)
 
-===========
+# 基于nodejs的微信公共平台API的SDK
 
-微信公共平台API
+目标是实现一个
 
-由于现有的node weixin api接口做的比较麻烦，不利于书写与理解．故重新书写代码，架构．
-让开发者更容易理解与使用，并且帮助提升软件质量
+1. 模块化、组件化、代码简洁、低耦合的node微信实现。
+2. 可以使用单独的模块，
+3. 也可以很方便的组合起来使用
+4. 有清晰的架构组织，
+5. 良好的协作模式
+6. 支持服务器的规模化（Scalable)
+
+## 帮助与交流
 
 交流QQ群: 39287176
+交流论坛： [http://forum.node-weixin.com/](http://forum.node-weixin.com/)
+
+> 将会优先解答论坛问题，欢迎提问。
+
+
+## 组成
 
 [node-weixin-api](https://github.com/node-weixin/node-weixin-api)是基于node-weixin-*的API接口的SDK。
 
@@ -47,7 +59,8 @@ Weixin API for node
 
  11. [node-weixin-link](https://github.com/node-weixin/node-weixin-link)
     微信推广相关的操作
- 12.  [weixin.message](https://github.com/node-weixin/node-weixin-message)
+
+ 12. [node-weixin-message](https://github.com/node-weixin/node-weixin-message)
     微信消息处理模块
 
 ## 集成的模块有：
@@ -78,7 +91,8 @@ $ npm install --save node-weixin-api
 
 ## 使用
 
-请参考各API的README文件指导
+请参考各API的README文件指导与测试用例。
+> 所有示例以测试用例代码为准。
 
 
 ## License
