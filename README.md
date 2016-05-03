@@ -16,6 +16,10 @@
 
 的第三方微信API的node微信实现。方便开发者讯速构建微信服务。
 
+# 框架无关的API库
+
+支持所有的web框架： express, koa, hapi, loopback等
+
 ## 帮助与交流
 
 交流QQ群: 39287176
