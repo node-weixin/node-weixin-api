@@ -22,7 +22,6 @@
 
 ## 帮助与交流
 
-交流QQ群: 39287176
 交流论坛： [http://forum.node-weixin.com/](http://forum.node-weixin.com/)
 
 > 将会优先解答论坛问题，欢迎提问。
