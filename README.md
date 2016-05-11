@@ -24,7 +24,7 @@
 
 交流论坛： [http://forum.node-weixin.com/](http://forum.node-weixin.com/)
 
-> 将会优先解答论坛问题，欢迎提问。
+> 唯一官方支持平台。
 
 
 ## 组成
