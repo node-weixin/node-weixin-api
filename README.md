@@ -26,6 +26,9 @@
 
 > 唯一官方支持平台。
 
+## 关注公共账号支持node-weixin的发展 
+![](http://res.cloudinary.com/dawjytvkn/image/upload/v1464858605/qrcode_for_gh_6f66da401fef_430_b1rr96.jpg)
+
 
 ## 组成
 
