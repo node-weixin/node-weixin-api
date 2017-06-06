@@ -2,6 +2,8 @@
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coveralls Status][coveralls-image]][coveralls-url] [![Beerpay](https://beerpay.io/node-weixin/node-weixin-api/badge.svg?style=flat-square)](https://beerpay.io/node-weixin/node-weixin-api)
 
+1GCvtQFEGC5bu1YpXLGdkYPqWTKmQcR8wK
+
 # 基于nodejs的微信公共平台API的SDK
 
 目标是实现一个
